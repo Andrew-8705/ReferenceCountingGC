@@ -40,6 +40,10 @@ public:
         }
     }
 
+    gc_ptr(gc_ptr&& other) noexcept : control_block(other.control_block) {
+        other.control_block = nullptr;
+    }
+
     gc_ptr& operator=(const gc_ptr& other) {
         if (this != &other) {
             release();
@@ -51,20 +55,38 @@ public:
         return *this;
     }
 
+    gc_ptr& operator=(gc_ptr&& other) noexcept {
+        if (this != &other) {
+            release();
+            control_block = other.control_block;
+            other.control_block = nullptr;
+        }
+        return *this;
+    }
+
+
     ~gc_ptr() {
         release();
     }
 
     T& operator*() const {
+        if (control_block == nullptr)
+            throw runtime_error("Accessing null pointer");
         return *(control_block->ptr);
     }
 
     T* operator->() const {
+        if (control_block == nullptr)
+            throw runtime_error("Accessing null pointer");
         return control_block->ptr;
     }
 
     int count() const {
-        return control_block->ref_count;
+        return control_block ? control_block->ref_count : 0;
+    }
+
+    bool is_null() const {
+        return control_block == nullptr;
     }
 };
 
@@ -112,3 +134,8 @@ int main() {
     //a->a_ptr = b;
     //b->b_ptr = a;
 }
+
+
+// добавлены необходимые проверки на null ptr
+// добавлен метод для проверки на nul ptr
+// добавлены методы перемещения (move semantics) для обработки правых ссылок
