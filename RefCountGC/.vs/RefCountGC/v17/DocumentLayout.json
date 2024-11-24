@@ -3,6 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\ReferenceCountingGC\\RefCountGC\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E6243387-64D5-4C5B-ACCA-186639ADA01C}|..\\Testing\\Testing.vcxproj|C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\ReferenceCountingGC\\Testing\\test.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6243387-64D5-4C5B-ACCA-186639ADA01C}|..\\Testing\\Testing.vcxproj|C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\ReferenceCountingGC\\Testing\\TestClass.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6243387-64D5-4C5B-ACCA-186639ADA01C}|..\\Testing\\Testing.vcxproj|C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\ReferenceCountingGC\\Testing\\gc_ptr.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{094A81E6-6346-4F01-9526-806FE19D25D9}|RefCountGC.vcxproj|C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\ReferenceCountingGC\\RefCountGC\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{094A81E6-6346-4F01-9526-806FE19D25D9}|RefCountGC.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -14,19 +23,62 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\ReferenceCountingGC\\RefCountGC\\main.cpp",
               "RelativeDocumentMoniker": "main.cpp",
               "ToolTip": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\ReferenceCountingGC\\RefCountGC\\main.cpp",
               "RelativeToolTip": "main.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAIoAAAAtAAAA",
+              "ViewState": "AQIAAHMAAAAAa2ZmZiYwwHoAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-17T11:24:57.404Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "gc_ptr.h",
+              "DocumentMoniker": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\ReferenceCountingGC\\Testing\\gc_ptr.h",
+              "RelativeDocumentMoniker": "..\\Testing\\gc_ptr.h",
+              "ToolTip": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\ReferenceCountingGC\\Testing\\gc_ptr.h",
+              "RelativeToolTip": "..\\Testing\\gc_ptr.h",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAAABEAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-24T15:07:19.701Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TestClass.h",
+              "DocumentMoniker": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\ReferenceCountingGC\\Testing\\TestClass.h",
+              "RelativeDocumentMoniker": "..\\Testing\\TestClass.h",
+              "ToolTip": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\ReferenceCountingGC\\Testing\\TestClass.h",
+              "RelativeToolTip": "..\\Testing\\TestClass.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-24T15:11:15.265Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "test.cpp",
+              "DocumentMoniker": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\ReferenceCountingGC\\Testing\\test.cpp",
+              "RelativeDocumentMoniker": "..\\Testing\\test.cpp",
+              "ToolTip": "C:\\Users\\andrew_baldin\\source\\repos\\Andrew-8705\\ReferenceCountingGC\\Testing\\test.cpp",
+              "RelativeToolTip": "..\\Testing\\test.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-24T15:08:24.147Z",
+              "IsPinned": true,
               "EditorCaption": ""
             }
           ]
