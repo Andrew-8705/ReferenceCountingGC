@@ -4,6 +4,7 @@
 # Папки с отладочными файлами
 RefCountGC/ARM64/Debug/
 Testing/ARM64/Debug/
+RefCountGC/RefCountGC/ARM64/Debug/
 
 # Папки с файлами сборки Release
 RefCountGC/ARM64/Release/
