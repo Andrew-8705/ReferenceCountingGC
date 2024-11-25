@@ -1,0 +1,63 @@
+# Папка с настройками Visual Studio
+.vs/
+
+# Папки с отладочными файлами
+RefCountGC/ARM64/Debug/
+Testing/ARM64/Debug/
+
+# Папки с файлами сборки Release
+RefCountGC/ARM64/Release/
+Testing/ARM64/Release/
+
+# Пользовательские настройки проекта
+*.vcxproj.user
+
+# Общие игнорируемые файлы
+*.log
+*.tmp
+*.swp
+*.bak
+*.old
+
+# Игнорировать папки build и dist (например, для CMake или других систем сборки)
+build/
+dist/
+
+# Игнорировать временные файлы IDE
+.idea/
+.vscode/
+.code-workspace
+
+# Исключения для файлов, которые могут понадобиться другим разработчикам
+# Не игнорировать исходные файлы
+!*.cpp
+!*.h
+!*.hpp
+!*.c
+!*.cc
+!*.hh
+
+# Не игнорировать файлы проекта
+!*.sln
+!*.vcxproj
+!*.vcxproj.filters
+
+# Не игнорировать скрипты
+!*.sh
+!*.bat
+!*.ps1
+
+# Не игнорировать файлы конфигурации
+!*.yaml
+!*.yml
+!*.json
+!*.xml
+!*.ini
+
+# Не игнорировать README файлы и файлы лицензий
+!README.md
+!LICENSE
+!LICENSE.txt
+
+# Не игнорировать сам файл .gitignore
+!.gitignore
