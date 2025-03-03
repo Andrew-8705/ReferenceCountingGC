@@ -1,7 +1,5 @@
 #pragma once
 
-#pragma once
-
 /* --perform.cpp-- */
 /*holds setup data to pass to constructor*/
 
