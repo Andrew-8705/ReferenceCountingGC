@@ -5,6 +5,8 @@
 RefCountGC/ARM64/Debug/
 Testing/ARM64/Debug/
 Bill_Blunden/ARM64/Debug
+Sample/ARM64/Debug
+Sample/Sample/ARM64/Debug
 RefCountGC/RefCountGC/ARM64/Debug/
 
 # Папки с файлами сборки Release
