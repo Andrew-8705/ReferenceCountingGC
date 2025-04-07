@@ -81,5 +81,32 @@ public:
             return table[hash(key)].second; // Возвращаем ссылку на вставленный элемент.
         }
     }
-    // Добавьте методы для удаления, изменения и т.д.
+    
+    bool remove(const KeyType& key) {
+        size_t index = hash(key);
+        size_t initial_index = index;
+
+        while (table[index].first != nullptr) {
+            if (table[index].first == key) {
+                table[index].first = nullptr; // Помечаем как удаленный
+                // Rehash последующих элементов, которые могли быть вставлены после коллизии
+                size_t next_index = (index + 1) % TABLE_SIZE;
+                while (table[next_index].first != nullptr) {
+                    KeyType temp_key = table[next_index].first;
+                    ValueType temp_value = table[next_index].second;
+                    table[next_index].first = nullptr;
+                    size--; // Уменьшаем размер перед повторной вставкой
+                    insert(temp_key, temp_value);
+                    next_index = (next_index + 1) % TABLE_SIZE;
+                }
+                size--;
+                return true;
+            }
+            index = (index + 1) % TABLE_SIZE;
+            if (index == initial_index) { // Прошли всю таблицу
+                break;
+            }
+        }
+        return false;
+    }
 };
