@@ -11,6 +11,24 @@ private:
 	static intptr_t* __rsp;
 	static intptr_t* __stackBegin;
 
+    static uintptr_t* get_current_rsp() {
+        uintptr_t* rsp;
+
+        #if defined(_MSC_VER)
+        #if defined(_M_IX86)
+                __asm { mov rsp, esp }
+        #endif
+        #elif defined(__GNUC__) || defined(__clang__)
+        #if defined(__i386__)
+                __asm__ volatile("movl %%esp, %0" : "=r"(rsp));
+        #elif defined(__x86_64__)
+                __asm__ volatile("movq %%rsp, %0" : "=r"(rsp));
+        #endif
+        #endif
+
+        return rsp;
+    }
+
     template <typename T>
     class MallocAllocator {
     public:
@@ -53,22 +71,20 @@ private:
     bool destructed = false;
 
     void scanStack() {
-        cout << "SCANNING STACK" << '\n';
+        GC_LOG_DEBUG("SCANNING STACK");
 
-        uintptr_t* rsp;
-        __asm { mov rsp, esp }
-
+        uintptr_t* rsp = get_current_rsp();
         uintptr_t* top = (uintptr_t*)__stackBegin;
 
         while (rsp < top) {
             void* ptr = (void*)*rsp;
-            cout << ptr << '\n';
+            GC_LOG_DEBUG("Checking pointer: " << ptr);
             if (ref_count.find(ptr) != ref_count.end()) {
-                cout << "POINTER WAS FOUND" << '\n';
+                GC_LOG_DEBUG("Pointer found in ref_count: " << ptr);
                 ref_count[ptr]++;
             }
-            rsp += sizeof(uintptr_t);
-            //rsp += 1;
+            //rsp++;
+            rsp += sizeof(uintptr_t*);
         }
     }
 
@@ -83,23 +99,26 @@ public:
     GarbageCollector& operator=(const GarbageCollector&) = delete;
 
     static void init() {
+        GC_FUNC_TRACE();
         __READ_RBP();
         __stackBegin = (intptr_t*)*__rbp;
         getInstance().initialized = true;
+        GC_LOG_INFO("Garbage collector initialized");
     }
 
     void collect() {
-        cout << "[GC] reference counting...\n"; // Logger
-        cout << "SIZE OF REF_COUNT: " << ref_count.size() << '\n'; // Logger
+        GC_LOG_INFO("[GC] Starting collection");
+        GC_LOG_DEBUG("Ref count size: " << ref_count.size());
         for (auto& pair : ref_count) {
-            cout << pair.first << ' ' << pair.second << '\n';
+            GC_LOG_DEBUG("Resetting counter for: " << pair.first);
             pair.second = 0;
         }
 
         scanStack();
 
-        cout << "AFTER COUNTING: " << '\n'; // Logger
-        for (const auto& pair : ref_count) cout << pair.first << ' ' << pair.second << '\n';
+        GC_LOG_DEBUG("After counting:");
+        for (const auto& pair : ref_count) GC_LOG_DEBUG(pair.first << " : " << pair.second);
+
         std::vector<void*> keys_to_delete;
 
         for (const auto& pair : ref_count) {
@@ -111,14 +130,14 @@ public:
         for (void* key : keys_to_delete) {
             size_t cnt = ref_count.erase(key);
             if (cnt > 0) {
-                cout << "Key was deleted: " << key << '\n'; // Logger
+                GC_LOG_INFO("Deleting key: " << key);
             }
             delete(key);
         }
 
-        cout << "AFTER DELETING: \n"; // Logger
+        GC_LOG_DEBUG("After deleting:");
         for (auto& pair : ref_count) {
-            cout << pair.first << ' ' << pair.second << '\n';
+            GC_LOG_DEBUG(pair.first << " : " << pair.second);
         }
     }
 
